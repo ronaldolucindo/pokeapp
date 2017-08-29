@@ -37,7 +37,15 @@
         <h1>Adicionar Pokemon</h1>
       </div> 
       <p ng-if="apiError">{{apiError}}</p>
-      <div ng-hide="pokemonModel.selectedName || apiEroor">
+      <div class="alert alert-success" ng-if="pokemonModel.selectedName">
+        <h4>Dados selecionados:</h4>
+        <p><strong>Pokemon:</strong> {{pokemonModel.selectedName}}</p>
+        <p ng-show="pokemonModel.selectedMove1"><strong>Habilidade 1:</strong> {{pokemonModel.selectedMove1}}</p>
+        <p ng-show="pokemonModel.selectedMove2"><strong>Habilidade 2:</strong> {{pokemonModel.selectedMove2}}</p>
+        <p ng-show="pokemonModel.selectedMove3"><strong>Habilidade 3:</strong> {{pokemonModel.selectedMove3}}</p>
+        <p ng-show="pokemonModel.selectedMove4"><strong>Habilidade 4:</strong> {{pokemonModel.selectedMove4}}</p>
+      </div>
+      <div ng-hide="pokemonModel.selectedName || apiError">
         <h3>Selecione o pokemon</h3>
         <input name="pokemon" type="text" class="form-control" ng-model="pokemonModel.name" placeholder="Pesquisar pokemon desejado..">
         <div class="list-group" ng-repeat="pokemon in listPokemons.results | filter:{name:pokemonModel.name}">
@@ -46,10 +54,6 @@
       </div>
       <!-- After select pokemon name, select the first move -->
       <div ng-if="pokemonModel.selectedName" ng-hide="pokemonModel.selectedMove1 || apiError">
-        <div class="alert alert-success">
-          <h4>Dados selecionados:</h4>
-          <p><strong>Pokemon:</strong>{{pokemonModel.selectedName}}</p>
-        </div>
         <h3>Selecionar habilidade 1</h3>
         <input name="move1" type="text" class="form-control" ng-model="pokemonModel.move1" placeholder="Pesquisar habilidade desejada..">
         <div class="list-group" ng-repeat="move in listMoves.results | filter:{name:pokemonModel.move1}">
@@ -58,11 +62,6 @@
       </div>
       <!-- move 2 -->
       <div ng-if="pokemonModel.selectedName && pokemonModel.selectedMove1" ng-hide="pokemonModel.selectedMove2">
-        <div class="alert alert-success">
-        <h4>Dados selecionados:</h4>
-        <p><strong>Pokemon:</strong> {{pokemonModel.selectedName}}</p>
-        <p><strong>Habilidade 1:</strong> {{pokemonModel.selectedMove1}}</p>
-        </div>
         <h3>Selecionar habilidade 2</h3>
         <input name="move2" type="text" class="form-control" ng-model="pokemonModel.move2" placeholder="Pesquisar habilidade desejada..">
         <div class="list-group" ng-repeat="move in listMoves.results | filter:{ name: '!' + pokemonModel.selectedMove1} | filter:{name:pokemonModel.move2}">
@@ -71,40 +70,19 @@
       </div>
       <!-- move 3 -->
       <div ng-if="pokemonModel.selectedName && pokemonModel.selectedMove1 && pokemonModel.selectedMove2" ng-hide="pokemonModel.selectedMove3">
-        <div class="alert alert-success">
-        <h4>Dados selecionados:</h4>
-        <p><strong>Pokemon:</strong> {{pokemonModel.selectedName}}</p>
-        <p><strong>Habilidade 1:</strong> {{pokemonModel.selectedMove1}}</p>
-        <p><strong>Habilidade 2:</strong> {{pokemonModel.selectedMove2}}</p>
-        </div>
         <h3>Selecionar habilidade 3</h3>
         <input name="move3" type="text" class="form-control" ng-model="pokemonModel.move3" placeholder="Pesquisar habilidade desejada..">
-        <div class="list-group" ng-repeat="move in listMoves.results | filter:{ name: '!' + pokemonModel.selectedMove1} | filter:{ name: '!' + pokemonModel.selectedMove2} | filter:pokemonModel.move3">
+        <div class="list-group" ng-repeat="move in listMoves.results | filter:{ name: '!' + pokemonModel.selectedMove1} | filter:{ name: '!' + pokemonModel.selectedMove2} | filter:{name:pokemonModel.move3}">
         <span class="list-group-item pointer" ng-show="pokemonModel.move3" ng-click="selectMove3(move.name)">{{move.name}}</span>
         </div>
       </div>
       <!-- move 4 -->
       <div ng-if="pokemonModel.selectedName && pokemonModel.selectedMove1 && pokemonModel.selectedMove2 && pokemonModel.selectedMove3" ng-hide="pokemonModel.selectedMove4">
-        <div class="alert alert-success">
-        <h4>Dados selecionados:</h4>
-        <p><strong>Pokemon:</strong> {{pokemonModel.selectedName}}</p>
-        <p><strong>Habilidade 1:</strong> {{pokemonModel.selectedMove1}}</p>
-        <p><strong>Habilidade 2:</strong> {{pokemonModel.selectedMove2}}</p>
-        <p><strong>Habilidade 3:</strong> {{pokemonModel.selectedMove3}}</p>
-        </div>
         <h3>Selecionar habilidade 4</h3>
         <input name="move4" type="text" class="form-control" ng-model="pokemonModel.move4" placeholder="Pesquisar habilidade desejada..">
-        <div class="list-group" ng-repeat="move in listMoves.results | filter:{ name: '!' + pokemonModel.selectedMove1} | filter:{ name: '!' + pokemonModel.selectedMove2} | filter:{ name: '!' + pokemonModel.selectedMove3} | filter:pokemonModel.move3">
+        <div class="list-group" ng-repeat="move in listMoves.results | filter:{ name: '!' + pokemonModel.selectedMove1} | filter:{ name: '!' + pokemonModel.selectedMove2} | filter:{ name: '!' + pokemonModel.selectedMove3} | filter:{name:pokemonModel.move4}">
         <span class="list-group-item pointer" ng-show="pokemonModel.move4" ng-click="selectMove4(move.name)">{{move.name}}</span>
         </div>
-      </div>
-      <div class="alert alert-success" ng-if="pokemonModel.selectedName && pokemonModel.selectedMove1 && pokemonModel.selectedMove2 && pokemonModel.selectedMove3 && pokemonModel.selectedMove4">
-        <h4>Dados selecionados:</h4>
-        <p><strong>Pokemon:</strong> {{pokemonModel.selectedName}}</p>
-        <p><strong>Habilidade 1:</strong> {{pokemonModel.selectedMove1}}</p>
-        <p><strong>Habilidade 2:</strong> {{pokemonModel.selectedMove2}}</p>
-        <p><strong>Habilidade 3:</strong> {{pokemonModel.selectedMove3}}</p>
-        <p><strong>Habilidade 4:</strong> {{pokemonModel.selectedMove4}}</p>
       </div>
 
     </div>
