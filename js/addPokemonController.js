@@ -12,8 +12,8 @@ pokeApp.controller('addPokemon', function($scope, $http){
 	selectedMove4: ''
 	};
 	$scope.selectPokemon = function(pokemon){
-	$scope.pokemonModel.selectedName = pokemon;
-	$scope.pokemonModel.name = pokemon;
+		$scope.pokemonModel.selectedName = pokemon;
+		$scope.pokemonModel.name = pokemon;
 	}
 	$scope.selectMove1 = function(m){
 		$scope.pokemonModel.selectedMove1 = m;
@@ -43,5 +43,31 @@ pokeApp.controller('addPokemon', function($scope, $http){
 		$scope.apiError='Erro ao conectar a API POKEAPI, tente atualizar a página';
 	});
 
+
+});
+
+pokeApp.controller('loginController', function($scope, $http){
+	$scope.loginModel ={
+		user = '',
+		passwd = ''
+	};
+
+	function reset(){
+		loginModel.user = '';
+		loginModel.passwd = '';
+	}
+
+});
+
+pokeApp.controller('registerController', function($scope, $http){
+	$scope.registerModel ={
+		user = '',
+		passwd = ''
+	};
+
+	function reset(){
+		registerModel.user = '';
+		register.Model.passwd = '';
+	}
 
 });
