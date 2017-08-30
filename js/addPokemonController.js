@@ -1,4 +1,4 @@
-pokeApp.controller('addPokemon', function($scope, $http){
+pokeApp.controller('addPokemon', function($scope, $http, userData){
 	$scope.pokemonModel = {
 	name: '',
 	selectedName: '',
@@ -46,28 +46,80 @@ pokeApp.controller('addPokemon', function($scope, $http){
 
 });
 
-pokeApp.controller('loginController', function($scope, $http){
+pokeApp.controller('loginController', function($scope, $http, $window, userData){
 	$scope.loginModel ={
-		user = '',
-		passwd = ''
+		user : '',
+		passwd : ''
 	};
+	$scope.auth = false;
+	$scope.loginError = false;
+	//$scope.content = {};
+	// $scope.getUser = function(path){
+	// 	$http.get($scope.filePath)
+	// 	.then(function(response){
+	// 		$scope.content = response.data;
+	// 		console.log($scope.content);
+		
+	// 		},
+	// 	function(response){
+	// 		//$scope.loginError = true;
+	// 	console.log(response);
+	// 	});
 
-	function reset(){
-		loginModel.user = '';
-		loginModel.passwd = '';
-	}
+	// }
+	
+
+	$scope.loginSubmit = function(){
+	
+	$scope.filePath = '/files/' + $scope.loginModel.user + '.json';
+	// $scope.getUser($scope.filePath);
+	$http.get($scope.filePath)
+	.then(function(response){
+		$scope.content = response.data;
+		if($scope.content.password === $scope.loginModel.passwd){
+			userData.set($scope.content);
+			$window.location.href = '/#!/user';
+		}
+		else{
+			$scope.loginError = true;
+		}
+		
+	},
+	function(response){
+		$scope.loginError = true;
+		// console.log(response);
+	});
+
+   	
+   	};
+	$scope.reset = function(){
+		$scope.loginModel.user = '';
+		$scope.loginModel.passwd = '';
+	};
 
 });
 
-pokeApp.controller('registerController', function($scope, $http){
+pokeApp.controller('registerController', function($scope, $http, userData){
 	$scope.registerModel ={
-		user = '',
-		passwd = ''
+		user : '',
+		passwd : ''
 	};
 
 	function reset(){
 		registerModel.user = '';
 		register.Model.passwd = '';
+	};
+
+});
+
+pokeApp.controller('userController', function($scope, $http, $window, userData){
+	$scope.data = userData.get();
+	if($scope.data){
+		//do stuff
+		console.log($scope.data);
+	}
+	else{
+		$window.location.href = '/';
 	}
 
 });

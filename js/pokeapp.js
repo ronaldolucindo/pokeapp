@@ -32,3 +32,17 @@ pokeApp.config(function($routeProvider, $locationProvider) {
 	.otherwise({redirectTo: '/'});
 	
 });
+
+pokeApp.service('userData', function(){
+	var data = null;
+	return {
+		get: function(){
+			return data;
+		},
+		set: function(value){
+			data = value;
+		}
+
+	}
+	
+});

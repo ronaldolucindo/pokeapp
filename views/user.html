@@ -1,0 +1,7 @@
+<div ng-if="data">
+	<h1>Olá, {{data.user}}</h1>
+	<div>
+		<h2>Times</h2>
+		<p ng-if="!data.user.team[0]">Você não possui times cadastrados</p>
+		<p>Cadastrar um novo Time</p>
+</div>
