@@ -1,4 +1,22 @@
 {
 	"user": "teste1",
-	"password": "teste"
+	"password": "teste",
+	"team": [{
+		"name": "time1",
+		"pokemons": [{
+			"name": "bulba",
+			"move1": "aaaaaaaa",
+			"move2": "bbbbbb",
+			"move3": "cccc",
+			"move4": "dddddddd"
+		},
+		{
+                        "name": "pikachu",
+                        "move1": "aa",
+                        "move2": "bb",
+                        "move3": "cc",
+                        "move4": "dd"
+                }
+		]
+	}]
 }
