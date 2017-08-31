@@ -47,6 +47,12 @@ pokeApp.controller('addPokemon', function($scope, $http, userData){
 });
 
 pokeApp.controller('loginController', function($scope, $http, $window, userData){
+	$scope.data = userData.get();
+	//if user is logged-in redirect to /user
+	if($scope.data){
+		$window.location.href = '/#!/user';
+
+	}
 	$scope.loginModel ={
 		user : '',
 		passwd : ''
@@ -105,11 +111,35 @@ pokeApp.controller('registerController', function($scope, $http, userData){
 		user : '',
 		passwd : ''
 	};
-
-	function reset(){
-		registerModel.user = '';
-		register.Model.passwd = '';
+	$scope.userContent ={
+			user : '',
+			password: '',
+			team: []
 	};
+	$scope.writeError = false;
+	$scope.writeSuccess = false; 
+
+	$scope.reset = function(){
+		$scope.registerModel.user = '';
+		$scope.registerModel.passwd = '';
+	};
+
+	$scope.save = function(){
+		$scope.userContent.user = $scope.registerModel.user;
+		$scope.userContent.password = $scope.registerModel.passwd;
+		$http.post('/php/save-json.php', $scope.userContent)
+		.then(function(){
+			//success
+			$scope.writeSuccess = true;
+			$scope.reset();
+		},
+		function(){
+			//error
+			$scope.writeError = true;
+		});
+	};
+
+
 
 });
 

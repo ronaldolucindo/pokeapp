@@ -29,7 +29,7 @@ pokeApp.config(function($routeProvider, $locationProvider) {
 		controller: 'addPokemon'
 	})
 
-	.otherwise({redirectTo: '/'});
+	//.otherwise({redirectTo: '/'});
 	
 });
 
