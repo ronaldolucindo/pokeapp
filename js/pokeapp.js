@@ -7,25 +7,29 @@ pokeApp.config(function($routeProvider, $locationProvider) {
 
 	//login route
 	.when('/', {
-		templateUrl: '/views/login.html',
+		templateUrl: 'views/login.html',
+		controller: 'loginController'
+	})
+	.when('/login', {
+		templateUrl: 'views/login.html',
 		controller: 'loginController'
 	})
 
 	//register route
 	.when('/register', {
-		templateUrl: '/views/register.html',
+		templateUrl: 'views/register.html',
 		controller: 'registerController'
 	})
 
 	//user route
 	.when('/user', {
-		templateUrl: '/views/user.html',
+		templateUrl: 'views/user.html',
 		controller: 'userController'
 	})
 
 	//add pokemon route
 	.when('/add', {
-		templateUrl: '/views/add.html',
+		templateUrl: 'views/add.html',
 		controller: 'addController'
 	})
 

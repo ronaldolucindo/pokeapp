@@ -1,7 +1,7 @@
 pokeApp.controller('addController', function($scope, $http, $window, userData){
 	$scope.loggedUser = userData.get();
 	if(!$scope.loggedUser){
-		$window.location.href = '/';
+		$window.location.href = '#!/login';
 
 	}
 	$scope.teamModel = {
@@ -68,7 +68,7 @@ pokeApp.controller('addController', function($scope, $http, $window, userData){
 		$scope.userCopy = userData.get();
 		$scope.userCopy.team.push($scope.team);
 		userData.set($scope.userCopy);
-		$http.post('/php/save-json.php', $scope.userCopy)
+		$http.post('php/save-json.php', $scope.userCopy)
 		.then(function(){
 			//success
 			$window.location.href = '#!/user';
@@ -131,7 +131,7 @@ pokeApp.controller('loginController', function($scope, $http, $window, userData)
 
 	$scope.loginSubmit = function(){
 	
-	$scope.filePath = '/files/' + $scope.loginModel.user + '.json';
+	$scope.filePath = 'files/' + $scope.loginModel.user + '.json';
 	$http.get($scope.filePath)
 	.then(function(response){
 		$scope.content = response.data;
@@ -179,7 +179,7 @@ pokeApp.controller('registerController', function($scope, $http, userData){
 	$scope.save = function(){
 		$scope.userContent.user = $scope.registerModel.user;
 		$scope.userContent.password = $scope.registerModel.passwd;
-		$http.post('/php/save-json.php', $scope.userContent)
+		$http.post('php/save-json.php', $scope.userContent)
 		.then(function(){
 			//success
 			$scope.writeSuccess = true;
@@ -202,7 +202,7 @@ pokeApp.controller('userController', function($scope, $http, $window, userData){
 
 	}
 	else{
-		$window.location.href = '/';
+		$window.location.href = '#!/login';
 	}
 
 });
