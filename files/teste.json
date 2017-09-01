@@ -1,1 +1,1 @@
-{"user":"teste","password":"teste","team":[]}
+{"user":"teste","password":"teste","team":[{"name":"teste","pokemon":[{"name":"bulbasaur","move1":"thrash","move2":"fire-blast","move3":"skull-bash","move4":"poison-gas"}]},{"name":"segundo time","pokemon":[{"name":"sandslash","move1":"fire-punch","move2":"fly","move3":"fury-attack","move4":"flamethrower"},{"name":"butterfree","move1":"thrash","move2":"strength","move3":"karate-chop","move4":"string-shot"}]}]}

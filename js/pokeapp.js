@@ -24,9 +24,9 @@ pokeApp.config(function($routeProvider, $locationProvider) {
 	})
 
 	//add pokemon route
-	.when('/add-pokemon', {
-		templateUrl: '/views/add-pokemon.html',
-		controller: 'addPokemon'
+	.when('/add', {
+		templateUrl: '/views/add.html',
+		controller: 'addController'
 	})
 
 	//.otherwise({redirectTo: '/'});

@@ -4,15 +4,15 @@
 		
 			<h2>Times</h2>
 			
-				<button class="btn btn-default mt-4 mb-4">Novo Time</button>
+				<a href="#!/add"><button class="btn btn-primary mt-4 mb-4">Novo Time</button></a>
 			
 			
 			<p ng-if="!data.team[0]">Você não possui times cadastrados</p>
 			
-			<div class="card" ng-repeat="item in data.team">
+			<div class="card mt-2" ng-repeat="item in data.team">
 				<div class="card-body">
 					<h4 class="card-title">{{item.name}}</h4>
-					<div class="float-left mr-5" ng-repeat="pokemon in item.pokemons">
+					<div class="float-left mr-5" ng-repeat="pokemon in item.pokemon">
 						<h5 class="card-subtitle mb-2 text-muted">{{pokemon.name}}</h5>
 						<ul>
 							<li>{{pokemon.move1}}</li>
